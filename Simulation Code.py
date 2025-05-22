@@ -4,12 +4,13 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from numpy import random
+import matplotlib.animation as animation
 
 #Setting up Parameters
 #Size of Lattice (size x size)
-size = 20
-#Temperature (K)         
-T = 100
+size = 100
+#Temperature (K)
+T = 1
 #Energy of neighboring dipoles, energy = -e when parallel and +e when parallel
 e = 1
 #Boltzmann Constant
@@ -33,7 +34,7 @@ def delta_U(i, j):
 
 #If delta U > 0 we flip the dipole with the following probability
 def prob_of_flipping(i, j):
-    probability = np.power(e, -delta_U(i, j)/T)
+    probability = np.exp(-delta_U(i, j)/T)
     return probability
 
 #Metropolis Algorithm
